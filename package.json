@@ -1,5 +1,5 @@
 {
-  "name": "jsonschema-form-table",
+  "name": "vue3-jsonschema-form",
   "version": "0.1.0",
   "author": "platoscave",
   "description": "A Vue3 plugin that generates Element Plus forms or tables based on a Jsonschema object",

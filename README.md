@@ -86,26 +86,26 @@ import 'jsonschema-form.css'
 | **title**<br/>string                  | | Used as label in forms and tables. |
 | **description**<br/>string | markdown | Used in info-icon tooltip. |
 | **maxLength**<br/>number              | | **type**: string<br/>Used in string input. Limits the number of characters. |
-| **minLength**<br/>number              | | **type**: string<br/>Used in string input. Generates a validation rule. |
+| **minLength**<br/>number              | | **type**: string<br/>Used in string input. Used to generate a validation rule. |
 | **minimum**<br/>number                | | **type**: number<br/>Used in number input. Limits minimum value. |
 | **maximum**<br/>number                | | **type**: number<br/>Used in number input. Limits maximum value. |
 | **multipleOf**<br/>number             | | **type**: number<br/>Used in number input. Determines number of decimal places. |
-| **format**<br/>string | email,<br/>uri |  **type**: string<br/>Used in string input. Generates a validation rule. |              
-| **pattern**<br/>string | regular exspression |  **type**: string<br/>Used in string input. Generates a validation rule. | 
+| **format**<br/>string | email, uri, date, date-time |  **type**: string<br/>'email, uri': Used in string input, used to generate a validation rule. <br>'date': pure date.<br>'date-time': ISO timestamp, in GMT  |              
+| **pattern**<br/>string | regular exspression |  **type**: string<br/>Used in string input. Used to generate a validation rule. | 
 | **contentMediaType**<br/>string | text/markdown,<br/>image/ | **type**: string<br/>Used in string input. Displays code editor in edit mode.
-| **displayAsTable**<br/>string | boolean |  **type**: array<br/>
-| **query**<br/>object                  |
-| **properties**<br/>properties object  |
-| **enum**<br/>string[]                 |
-| **attrs**<br/>                        |
-| - **placeholder**<br>string            |
-| - **type**<br/>string                   |
-| - **showWordLimit**<br/>boolean         |
-| **items**<br/>                        |
-| - **query**<br/>Object                  |
-| - **properties**<br/>properties object  |
-| - **type**<br/>string                   |
-| **required**<br/>string[]             |
+| **displayAsTable**<br/>boolean | true, false|  **type**: array<br/>Display the array as table or sub-form. 
+| **query**<br/>object                  | | **type**: string, array<br/>Non-jsonschema. The query used to fill dropdown listbox / radio buttons. |
+| **properties**<br/>properties object  | | **type**: object<br/>Properties for nested object to be displayed as sub-form. |
+| **enum**<br/>string[]                 | | **type**: string<br/>Array used to fill dropdown listbox / radio buttons. |
+| **attrs**<br>object | | non-jsonschema |
+| &nbsp;&nbsp;&nbsp;&nbsp;**placeholder**<br>&nbsp;&nbsp;&nbsp;&nbsp;string | | **type**: string, number<br/>Placeholder text. |
+| &nbsp;&nbsp;&nbsp;&nbsp;**type**<br/>&nbsp;&nbsp;&nbsp;&nbsp;string | password, textarea| **type**: string<br/>'password: hiddent input.<br>'textarea': auto grow input field.|
+| &nbsp;&nbsp;&nbsp;&nbsp;**showWordLimit**<br/>&nbsp;&nbsp;&nbsp;&nbsp;boolean | true, false | **type**: string **attrs.type**: textarea<br>Whether or not to show character count.|
+| **items**<br/> |  | **type**: array<br/>Describes the items of the array.
+| &nbsp;&nbsp;&nbsp;&nbsp;**type**<br/>&nbsp;&nbsp;&nbsp;&nbsp;string | object, string | **type**: array<br/>|
+| &nbsp;&nbsp;&nbsp;&nbsp;**query**<br/>&nbsp;&nbsp;&nbsp;&nbsp;object | |  **type**: array,  **items.type**: string<br/>Non-jsonschema. The query used to fill multi-select dropdown listbox / checkboxes.
+| &nbsp;&nbsp;&nbsp;&nbsp;**properties**<br/>&nbsp;&nbsp;&nbsp;&nbsp;properties object  | | **type**: array,  **items.type**: object<br/><br>Properties for array item object to be displayed as sub-form. |
+| **required**<br/>string[] |
 | **additionalItems**<br/>boolean       |
 
 ### 4.2 Screenshots
