@@ -11,5 +11,6 @@ import './style.css'
 
 const app = createApp(App);
 app.use(ElementPlus, { locale })
+// @ts-expect-error
 app.use(JsonschemaForm);
 app.mount("#app");

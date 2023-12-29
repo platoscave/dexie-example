@@ -27,16 +27,6 @@ interface IItem {
 }
 const itemsRef = ref<IItem[]>([])
 
-// const props = defineProps({
-//     modelValue: { type: String, default: "" },
-//     property: { type: Object, default: () => ({}) },
-//     readonly: { type: Boolean, default: true },
-//     queryCallback: { type: Function, default: () => ([]) },
-//     required: { type: Boolean, default: false },
-// });
-// defineEmits(['update:modelValue']);
-
-// const itemsRef = ref([])
 
 const readonlyOutput = computed(() => {
     if (!(props.modelValue && itemsRef.value)) return { icon: '', label: '' };

@@ -1,3 +1,4 @@
+import path from 'path'
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -9,6 +10,7 @@ export default defineConfig({
     vue(),
     typescript2({
       check: false,
+      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
       include: ["src/components/*.vue"],
       tsconfigOverride: {
         compilerOptions: {
@@ -16,7 +18,7 @@ export default defineConfig({
           declaration: true,
           declarationMap: true,
         },
-        exclude: ["vite.config.ts", "main.ts"],
+        exclude: ["vite.config.ts"],
       },
     }),
   ],
@@ -30,7 +32,7 @@ export default defineConfig({
     lib: {
       entry: "./src/JsonschemaFormPlugin.ts",
       formats: ["es", "cjs"],
-      name: "JsonschemaFormPlugin",
+      name: "Jsonschemaform",
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
     },
     rollupOptions: {
@@ -41,5 +43,6 @@ export default defineConfig({
         },
       },
     },
+
   },
 })
