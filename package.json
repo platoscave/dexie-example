@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "author": "platoscave",
   "description": "A Vue3 plugin that generates Element Plus forms or tables based on a Jsonschema object",
+  "keywords": ["json schema", "jsonschema", "form", "element plus", "vue3"],
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "./dist/vue3-jsonschema-form.umd.js",
+  "module": "./dist/vue3-jsonschema-form.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./styles.css": "./dist/style.css"
+    ".": {
+      "import": "./dist/vue3-jsonschema-form.esm.js",
+      "require": "./dist/vue3-jsonschema-form.js"
+    }
   },
-  "browser": {
-    "./styles.css": "./dist/style.css"
-  },
-  "types": "dist/JsonschemaForm.d.ts",
   "files": [
-    "dist"
+    "dist", "src"
   ],
   "scripts": {
     "dev": "vite",
@@ -28,8 +28,10 @@
     "@codemirror/theme-one-dark": "^6.1.2",
     "@ts-stack/markdown": "^1.5.0",
     "codemirror": "^5.65.16",
-    "element-plus": "^2.4.3",
-    "vue": "^3.3.8"
+    "element-plus": "^2.4.3"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.15",
@@ -37,10 +39,13 @@
     "@vitejs/plugin-vue": "^4.5.0",
     "@vueuse/core": "^10.7.0",
     "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-vue": "^6.0.0",
     "splitpanes": "^3.1.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.7.0",
     "vue-codemirror": "^6.1.1",
-    "vue-tsc": "^1.8.22"
+    "vue-tsc": "^1.8.22",
+    "vue": "^3.0.0"
   }
 }

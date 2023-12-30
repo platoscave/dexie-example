@@ -1,39 +1,23 @@
+import { defineConfig } from "vite";
 import path from 'path'
-import { fileURLToPath, URL } from "url";
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import typescript2 from "rollup-plugin-typescript2";
+import vue from "@vitejs/plugin-vue";
+import dts from "vite-plugin-dts";
+
+//const path = require("path");
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    typescript2({
-      check: false,
-      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-      include: ["src/components/*.vue"],
-      tsconfigOverride: {
-        compilerOptions: {
-          sourceMap: true,
-          declaration: true,
-          declarationMap: true,
-        },
-        exclude: ["vite.config.ts"],
-      },
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
-  },
+  plugins: [vue(), dts()],
   build: {
-    cssCodeSplit: false,
+    // lib: {
+    //   entry: path.resolve(__dirname, "src/index.ts"),
+    //   fileName: (format) => `index.${format}.js`,
+    //   name: "index",
+    // },
     lib: {
-      entry: "./src/JsonschemaFormPlugin.ts",
-      formats: ["es", "cjs"],
-      name: "Jsonschemaform",
-      fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "JsonschemaForm",
+      fileName: "vue3-jsonschema-form",
     },
     rollupOptions: {
       external: ["vue"],
@@ -43,6 +27,5 @@ export default defineConfig({
         },
       },
     },
-
   },
-})
+});
