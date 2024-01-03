@@ -13,6 +13,9 @@ import initialEditPermittedObj from './testData/initialEditPermittedObj'
 //@ts-expect-error
 import initialFormQueryData from './testData/formQueryData'
 
+import { ElRadioGroup, ElRadio, ElInput, ElTabPane, ElTabs } from 'element-plus'
+
+import JsonschemaForm from './components/JsonschemaForm.vue'
 import JsonschemaTable from './components/JsonschemaTable.vue'
 import StringCodeEditorCtrl from './components/controls/StringCodeEditorCtrl.vue'
 import { Splitpanes, Pane } from 'splitpanes'

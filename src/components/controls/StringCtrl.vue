@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { get } from 'lodash';
+import { ElInput } from 'element-plus'
 import type { IProperty } from '../../models/property'
 
 export interface IProps {

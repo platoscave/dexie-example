@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import JsonschemaForm from '../JsonschemaForm.vue'
 import { useDark } from '@vueuse/core'
 import type { IComponentInterface } from '../../models/componentInterface'
 

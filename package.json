@@ -1,27 +1,31 @@
 {
   "name": "vue3-jsonschema-form",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "author": "platoscave",
   "description": "A Vue3 plugin that generates Element Plus forms or tables based on a Jsonschema object",
   "keywords": ["json schema", "jsonschema", "form", "element plus", "vue3"],
   "license": "MIT",
+  "homepage": "https://github.com/platoscave/vue3-jsonschema-form",
+  "bugs": {
+    "url": "https://github.com/platoscave/vue3-jsonschema-form/issues"
+  },
   "type": "module",
   "main": "./dist/vue3-jsonschema-form.umd.js",
   "module": "./dist/vue3-jsonschema-form.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/vue3-jsonschema-form.esm.js",
-      "require": "./dist/vue3-jsonschema-form.js"
-    }
+      "import": "./dist/vue3-jsonschema-form.js",
+      "require": "./dist/vue3-jsonschema-form.umd.js"
+    },
+    "./style.css": "./dist/style.css"
   },
-  "files": [
-    "dist", "src"
-  ],
+  "files": [ "dist"],
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build && npm run generate:types",
+    "preview": "vite preview",
+    "generate:types": "vue-tsc --declaration --emitDeclarationOnly --outdir ./dist"
   },
   "dependencies": {
     "@codemirror/lang-json": "^6.0.1",

@@ -81,9 +81,10 @@ import 'jsonschema-form.css'
 |clearValidate | Clear validation message for specified fields. |  |
 
 ### Compatability
+Below is an overview of the properties attribute which we support. Foremost among these is the type attribute.
 | Attribute<br>Type | Values | Usage |
 |:-------------------| ------ | ------| 
-| **type**<br>string                   | string,number, boolean, object, array | Determines control component type e.g. string input, number input, sub-forms etc. | 
+| **type**<br>string                   | string, number, integer, boolean, object, array | Determines control component type e.g. string input, number input, sub-forms etc. | 
 | **title**<br>string                  | | Used as label in forms and tables. |
 | **description**<br>string | markdown | Used in info-icon tooltip. |
 | **maxLength**<br>number              | | **type**: string<br>Used in string input. Limits the number of characters. |

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
+import { ElRadioGroup, ElRadio, ElSelect, ElOption } from 'element-plus'
 import type { IProperty } from '../../models/property'
 
 export interface IProps {

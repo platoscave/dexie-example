@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ElCheckbox } from 'element-plus'
 
 export interface IProps {
   modelValue?: boolean

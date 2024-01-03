@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import JsonschemaForm from '../JsonschemaForm.vue'
 import type { IComponentInterface } from '../../models/componentInterface'
 
 withDefaults(defineProps<IComponentInterface>(), {

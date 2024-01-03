@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { ElInputNumber } from 'element-plus'
 import type { IProperty } from '../../models/property'
 
 export interface IProps {

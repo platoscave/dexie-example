@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { ElForm } from 'element-plus' // for elFormRef
+import { computed } from "vue";
+import { ElTable, ElTableColumn, ElTooltip } from 'element-plus'
 import BooleanCtrl from "./controls/BooleanCtrl.vue";
 import StringDateTimeCtrl from "./controls/StringDateTimeCtrl.vue";
 import StringMarkdownCtrl from "./controls/StringMarkdownCtrl.vue";
@@ -38,14 +38,14 @@ const emit = defineEmits<{
 }>()
 
 // methodes called from outside, so pass on to our form
-const formElRef = ref<InstanceType<typeof ElForm> | null>(null);
-const validate = () => {
-    if (formElRef.value) return formElRef.value.validate();
-};
-const resetFields = () => {
-    if (formElRef.value) formElRef.value.resetFields();
-};
-defineExpose({ validate, resetFields });
+//const formElRef = ref<InstanceType<typeof ElTable> | null>(null);
+//const validate = () => {
+//if (formElRef.value) return formElRef.value.validate();
+//};
+//const resetFields = () => {
+//if (formElRef.value) formElRef.value.resetFields();
+//};
+//defineExpose({ validate, resetFields });
 
 //@ts-expect-error
 const validationRules = computed(() => {
