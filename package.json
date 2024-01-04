@@ -18,7 +18,8 @@
       "import": "./dist/vue3-jsonschema-form.js",
       "require": "./dist/vue3-jsonschema-form.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./types.d.ts": "./dist/types.d.ts"
   },
   "files": [ "dist"],
   "scripts": {
