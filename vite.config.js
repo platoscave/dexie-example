@@ -23,6 +23,7 @@ export default defineConfig({
       // default fileName is the name option of package.json
       fileName: "vue3-jsonschema-form",
     },
+    sourcemap: true,
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library

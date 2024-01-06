@@ -39,14 +39,25 @@ const emit = defineEmits<{
 
 // Methods called from parent comp, so pass on to our form
 const formElRef = ref<InstanceType<typeof ElForm> | null>(null);
-const validate = () => {
-    if (formElRef.value) return formElRef.value.validate();
-};
-const resetFields = () => {
-    if (formElRef.value) formElRef.value.resetFields();
-};
+//@ ts-expect-error
+const validate = (valid: boolean) => formElRef.value?.validate(valid)
+const resetFields = () => formElRef.value?.resetFields()
 // Expose these methods to parent component
 defineExpose({ validate, resetFields });
+
+
+// const validate = async () => {
+//     if (!formElRef.value) return
+//     await formElRef.value.validate((valid, fields) => {
+//         if (valid) {
+//             console.log('submit!')
+//         } else {
+//             console.log('error submit!', fields)
+//         }
+//     })
+// }
+
+
 
 // Create the validation rules object
 const validationRules = computed(() => {
