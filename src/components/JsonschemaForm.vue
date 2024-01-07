@@ -18,6 +18,7 @@ import JsonschemaForm from "./JsonschemaForm.vue";
 import Markdown2Html from './controls/Markdown2Html.vue'
 import type { IProperty } from '../models/property'
 import type { IComponentInterface } from '../models/componentInterface'
+import { forEachChild } from "typescript";
 
 const props = withDefaults(defineProps<IComponentInterface>(), {
     modelValue: () => ({}),
@@ -37,26 +38,24 @@ const emit = defineEmits<{
     (e: 'header-dragend', columWidths: number[]): void
 }>()
 
-// Methods called from parent comp, so pass on to our form
+// Validate called from parent comp, so pass on to our child comp
 const formElRef = ref<InstanceType<typeof ElForm> | null>(null);
-//@ ts-expect-error
-const validate = (valid: boolean) => formElRef.value?.validate(valid)
+const schemaFormElRef = ref([]);
+const validate = (valid: any) => {
+    // test the form
+    if (!formElRef.value?.validate(valid)) return false
+    // test any nested form if any
+    schemaFormElRef.value.forEach((item) => {
+        if (item.validate) {
+            console.log('item', item)
+            if (!item.validate(valid)) return false
+        }
+    })
+    return true
+}
 const resetFields = () => formElRef.value?.resetFields()
 // Expose these methods to parent component
 defineExpose({ validate, resetFields });
-
-
-// const validate = async () => {
-//     if (!formElRef.value) return
-//     await formElRef.value.validate((valid, fields) => {
-//         if (valid) {
-//             console.log('submit!')
-//         } else {
-//             console.log('error submit!', fields)
-//         }
-//     })
-// }
-
 
 
 // Create the validation rules object
@@ -258,6 +257,7 @@ const infoIcon =
                 <component
                     v-if="isNestedObject(property)"
                     :is="getComponent(property)"
+                    :ref="(el: never) => { schemaFormElRef.push(el) }"
                     class="sf-full-width"
                     :model-value="modelValue[propertyName]"
                     :property="property"
