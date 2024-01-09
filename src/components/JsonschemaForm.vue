@@ -18,7 +18,7 @@ import JsonschemaForm from "./JsonschemaForm.vue";
 import Markdown2Html from './controls/Markdown2Html.vue'
 import type { IProperty } from '../models/property'
 import type { IComponentInterface } from '../models/componentInterface'
-import { forEachChild } from "typescript";
+
 
 const props = withDefaults(defineProps<IComponentInterface>(), {
     modelValue: () => ({}),
@@ -45,9 +45,10 @@ const validate = (valid: any) => {
     // test the form
     if (!formElRef.value?.validate(valid)) return false
     // test any nested form if any
-    schemaFormElRef.value.forEach((item) => {
+    //console.log('schemaFormElRef', schemaFormElRef)
+    schemaFormElRef.value.forEach((item: any) => {
         if (item.validate) {
-            console.log('item', item)
+            //console.log('item', item)
             if (!item.validate(valid)) return false
         }
     })
@@ -257,7 +258,7 @@ const infoIcon =
                 <component
                     v-if="isNestedObject(property)"
                     :is="getComponent(property)"
-                    :ref="(el: never) => { schemaFormElRef.push(el) }"
+                    :ref="schemaFormElRef"
                     class="sf-full-width"
                     :model-value="modelValue[propertyName]"
                     :property="property"
